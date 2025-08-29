@@ -20,6 +20,7 @@ A **role-based backend system** built with **Django + Django REST Framework** fo
 ✅ **Custom API Response & Pagination** for consistency  
 ✅ **OpenAPI Docs** via Swagger & Redoc  
 ✅ **Unit & Integration Tests** with pytest  
+✅ **Logging Errors** with pytest  
 
 ---
 
