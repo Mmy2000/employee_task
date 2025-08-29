@@ -1,61 +1,80 @@
-🚀 Features
+# 🌐 Company Management System – Backend  
 
-Authentication & RBAC
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)  
+![Django](https://img.shields.io/badge/Django-5.0-green?logo=django&logoColor=white)  
+![DRF](https://img.shields.io/badge/DRF-REST%20Framework-red?logo=django&logoColor=white)  
+![License](https://img.shields.io/badge/License-MIT-yellow)  
+![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen?logo=pytest)  
 
-JWT Authentication (Login/Refresh)
+A **role-based backend system** built with **Django + Django REST Framework** for managing **companies, departments, employees, projects, and performance reviews**.  
 
-Roles: ADMIN, MANAGER, EMPLOYEE
+---
 
-Fine-grained access:
+## ✨ Features  
 
-Admin → full control
+✅ **JWT Authentication & RBAC** (Admin, Manager, Employee)  
+✅ **Companies & Departments** with counts  
+✅ **Employees** CRUD with self-service (`/me/`) endpoint  
+✅ **Projects** linked to companies & departments  
+✅ **Performance Review Workflow** (schedule → feedback → approval)  
+✅ **Custom API Response & Pagination** for consistency  
+✅ **OpenAPI Docs** via Swagger & Redoc  
+✅ **Unit & Integration Tests** with pytest  
 
-Manager → restricted to own company
+---
 
-Employee → only own profile & reviews
+## 🗂️ Project Structure  
 
-Company & Department Management
+│── accounts/ # Users, Auth, Permissions
+│── core/ # Company, Department, Employee, Project
+│── reviews/ # Performance Reviews Workflow
+│── config/ # Settings, URLs, Custom Response & Pagination
+│── tests/ # Unit & Integration Tests
+│── manage.py
 
-View companies with auto-calculated counts
 
-View departments by company
+---
 
-Employee Management
+## 🛠️ Tech Stack  
 
-CRUD operations (role-based restrictions)
+- ⚡ **Python 3.11+**  
+- 🟢 **Django 5**  
+- 🔴 **Django REST Framework (DRF)**  
+- 🔐 **JWT Authentication (djangorestframework-simplejwt)**  
+- 🐘 **PostgreSQL** (SQLite supported for local dev)  
+- 🧪 **pytest + pytest-django**  
 
-Auto-calculated days employed
+---
 
-/api/employees/me/ endpoint for employees
+## 🔑 Authentication  
 
-Project Management (Bonus)
+All secured endpoints require a JWT token:  
 
-CRUD with assigned employees
+```http
+Authorization: Bearer <your-access-token>
 
-Linked to company & department
+⚙️ Installation
+1️⃣ Clone the repo
+git clone https://github.com/Mmy2000/employee_task.git
+cd employee_task
 
-Performance Review Workflow
+2️⃣ Setup environment
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate      # Windows
 
-Pending → Scheduled → Feedback Provided → Under Approval → Approved/Rejected → Rework
+3️⃣ Install dependencies
+pip install -r requirements.txt
 
-Workflow actions secured (only Admin/Manager can process, employee can only view)
+4️⃣ Configure .env
+5️⃣ Run migrations & create superuser
+python manage.py migrate
+python manage.py createsuperuser
 
-Custom API Responses
+6️⃣ Start the server
+python manage.py runserver
 
-Unified JSON structure with status, message, data, pagination
-
-Custom Pagination
-
-Page info: current, total, per_page, first/last page
-
-API Documentation
-
-OpenAPI schema (/api/schema/)
-
-Swagger UI (/api/docs/)
-
-Testing
-
-Unit tests for models and workflow transitions
-
-Integration tests for endpoints and permissions
+📖 API Docs
+Swagger UI → http://localhost:8000/api/docs/
+Redoc → http://localhost:8000/api/redoc/
+OpenAPI JSON → http://localhost:8000/api/schema/
